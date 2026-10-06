@@ -6,6 +6,7 @@
 ## IconTexture: Interface\Icons\Trade_Fishing
 ## SavedVariables: EzFishingDB
 ## SavedVariablesPerCharacter: EzFishingCharDB
+## X-Curse-Project-ID: 1729414
 
 Data.lua
 Core.lua

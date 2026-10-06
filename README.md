@@ -49,7 +49,7 @@ Then type `/ezf config` (or Esc > Options > AddOns > EzFishing) and bind **Cast 
 
 ## Releasing (maintainer notes)
 
-1. Add `## X-Curse-Project-ID` / `## X-Wago-ID` to the toc once the projects exist, and set the repo secrets `CF_API_KEY`, `WAGO_API_TOKEN`, `WOWI_API_TOKEN`.
+1. CurseForge project ID is in the toc (`## X-Curse-Project-ID: 1729414`, listed as "EzFishing Forever"); add `## X-Wago-ID` once that project exists, and set the repo secrets `CF_API_KEY`, `WAGO_API_TOKEN`, `WOWI_API_TOKEN`.
 2. Update `CHANGELOG.md`, then `git tag vX.Y.Z && git push origin vX.Y.Z`.
 
 ## License
