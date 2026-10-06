@@ -18,7 +18,7 @@ local RED    = { 0.9, 0.2, 0.2 }
 local WHITE8 = "Interface\\Buttons\\WHITE8x8"
 
 local PAD, ICON, GAP = 6, 30, 4
-local WIDTH, HEIGHT = 272, ICON + PAD * 2
+local WIDTH, HEIGHT = 310, ICON + PAD * 2
 
 local hud = CreateFrame("Frame", "EzFishingHUD", UIParent, "BackdropTemplate")
 hud:SetSize(WIDTH, HEIGHT)
@@ -85,6 +85,9 @@ local skillText = Text("TOPLEFT", TEXT_LEFT, -PAD - 3, "LEFT")
 local zoneText  = Text("TOPRIGHT", -PAD - 2, -PAD - 3, "RIGHT")
 local lureText  = Text("BOTTOMLEFT", TEXT_LEFT, PAD + 4, "LEFT")
 local rateText  = Text("BOTTOMRIGHT", -PAD - 2, PAD + 4, "RIGHT")
+-- Left texts stop short of their right-hand neighbour, so the two can never overlap.
+skillText:SetPoint("RIGHT", zoneText, "LEFT", -8, 0)
+lureText:SetPoint("RIGHT", rateText, "LEFT", -8, 0)
 
 ---------------------------------------------------------------------------
 -- Cast progress bar with typical-bite marker (only updates while the bobber is out)

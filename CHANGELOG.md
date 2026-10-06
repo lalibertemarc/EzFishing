@@ -1,5 +1,9 @@
 # EzFishing
 
+## v0.1.1
+
+- Fixed the HUD's skill line running into the zone requirement when a pole or lure bonus is shown. The HUD is a little wider and its texts can no longer overlap.
+
 ## v0.1.0
 
 - One key to cast and hook: bind "Cast / Hook", press to cast, press again when the bobber splashes.
