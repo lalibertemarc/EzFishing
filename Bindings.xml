@@ -1,0 +1,7 @@
+<Bindings>
+	<Binding name="CLICK EzFishingCastButton:LeftButton" category="EzFishing"/>
+	<Binding name="CLICK EzFishingLureButton:LeftButton" category="EzFishing"/>
+	<Binding name="EZFISHING_POLE" category="EzFishing">
+		EzFishing_TogglePole()
+	</Binding>
+</Bindings>

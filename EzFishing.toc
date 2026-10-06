@@ -1,0 +1,17 @@
+## Interface: 16001
+## Title: EzFishing
+## Notes: One key to cast and hook, loud splashes, lures, pole swap and catch stats.
+## Author: Marc
+## Version: @project-version@
+## IconTexture: Interface\Icons\Trade_Fishing
+## SavedVariables: EzFishingDB
+## SavedVariablesPerCharacter: EzFishingCharDB
+
+Data.lua
+Core.lua
+CVars.lua
+Cast.lua
+Gear.lua
+Stats.lua
+HUD.lua
+Settings.lua
