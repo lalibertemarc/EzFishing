@@ -43,22 +43,12 @@ local function Build()
     local ApplySession, RefreshHUD = ns.Gear.ApplySession, ns.HUD.Refresh
 
     Header("Key bindings")
-    -- Same binding rows as the Key Bindings page, so keys can be set right here.
-    local bindingsAdded = false
-    for _, binding in ipairs(ns.BINDINGS) do
-        local index = C_KeyBindings.GetBindingIndex(binding.action)
-        if index then
-            local initializer = CreateKeybindingEntryInitializer(index, true)
-            initializer:AddSearchTags(binding.label)
-            layout:AddInitializer(initializer)
-            bindingsAdded = true
-        end
-    end
-    if not bindingsAdded then
-        layout:AddInitializer(CreateSettingsButtonInitializer("Cast / Hook key", "Key Bindings",
-            function() Settings.OpenToCategory(Settings.KEYBINDINGS_CATEGORY_ID, "EzFishing") end,
-            "Bind the keys in the EzFishing section of the Key Bindings page.", true))
-    end
+    -- No inline binding rows or search tags: CreateKeybindingEntryInitializer and AddSearchTags
+    -- write fields from addon code, which taints the options search when it reads them. The search
+    -- results then get blocked (e.g. Discord's IsUserOAuthed) and EzFishing takes the blame.
+    layout:AddInitializer(CreateSettingsButtonInitializer("Cast / Hook key", "Key Bindings",
+        function() Settings.OpenToCategory(Settings.KEYBINDINGS_CATEGORY_ID, "EzFishing") end,
+        "Bind the keys in the EzFishing section of the Key Bindings page.", false))
 
     Header("Casting")
     Check("keyHook", "Same key hooks the bobber",

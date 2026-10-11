@@ -59,7 +59,7 @@ ns.ZONE_SKILL = {
     ["Stratholme"] = 425, ["Winterspring"] = 425,
 }
 
--- Key bindings from Bindings.xml with their labels, in the order shown on the options page.
+-- Key bindings from Bindings.xml with their labels (shown on the Key Bindings page).
 ns.BINDING_CAST = "CLICK EzFishingCastButton:LeftButton"
 ns.BINDINGS = {
     { action = ns.BINDING_CAST, label = "Cast / Hook" },

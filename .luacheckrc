@@ -20,7 +20,6 @@ read_globals = {
     "SecureHandlerWrapScript", "PlaySound", "SOUNDKIT",
     -- Settings panel
     "Settings", "CreateSettingsListSectionHeaderInitializer", "CreateSettingsButtonInitializer",
-    "CreateKeybindingEntryInitializer", "C_KeyBindings",
     "MinimalSliderWithSteppersMixin",
     -- Namespaced APIs
     "C_Spell", "C_Item", "C_Container", "C_CVar", "C_SkillInfo", "C_PaperDollInfo",

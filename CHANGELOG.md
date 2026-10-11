@@ -1,5 +1,9 @@
 # EzFishing
 
+## v0.1.2
+
+- Fixed "EzFishing has been blocked from an action only available to the Blizzard UI" when searching the game options (e.g. "scr"). The key binding rows on the EzFishing options page tainted the search; they are replaced by a button that opens the Key Bindings page.
+
 ## v0.1.1
 
 - Fixed the HUD's skill line running into the zone requirement when a pole or lure bonus is shown. The HUD is a little wider and its texts can no longer overlap.
