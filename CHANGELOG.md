@@ -1,5 +1,15 @@
 # EzFishing
 
+## v1.0.0
+
+EzFishing 1.0: tested and working on WoW Forever.
+
+- Fixed the pole swap: Forever blocked it ("EzFishing has been blocked from an action only available to the Blizzard UI"). The pole button on the HUD, the "Swap pole / weapons" key and the Cast key's pole equip all work again, and your existing key binding is kept.
+- Swapping back puts both weapons on in one press, each in the right hand even if you carry two of the same weapon.
+- New: `/click EzFishingPoleButton` swaps pole and weapons from a macro.
+- Forever doesn't let addons change your gear on their own, so EzFishing no longer swaps your weapons back by itself when combat starts or when you stop fishing. Those two options now remind you which key swaps back instead.
+- `/ezf pole` now tells you how to swap (addons can't swap gear from a slash command).
+
 ## v0.1.2
 
 - Fixed "EzFishing has been blocked from an action only available to the Blizzard UI" when searching the game options (e.g. "scr"). The key binding rows on the EzFishing options page tainted the search; they are replaced by a button that opens the Key Bindings page.
