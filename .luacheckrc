@@ -27,7 +27,7 @@ read_globals = {
     -- Constants
     "INVSLOT_MAINHAND", "INVSLOT_OFFHAND", "NUM_BAG_SLOTS", "ERR_FISH_ESCAPED",
     -- Global APIs
-    "GetSpellInfo", "GetItemCount", "GetItemIcon", "EquipItemByName",
+    "GetSpellInfo", "GetItemCount", "GetItemIcon",
     "GetWeaponEnchantInfo", "GetProfessions", "GetProfessionInfo",
     "GetInventoryItemID", "GetInventoryItemLink", "UnitChannelInfo", "UnitExists", "UnitIsDeadOrGhost",
     "UnitHasVehicleUI", "GetRealZoneText", "GetSubZoneText", "GetTime", "InCombatLockdown",

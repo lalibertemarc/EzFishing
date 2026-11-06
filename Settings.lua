@@ -73,10 +73,10 @@ local function Build()
     Check("smartLure", "Cast key applies a lure",
         "If the pole has no lure, the Cast key applies the best lure in your bags before casting.")
     Check("lureWarning", "Warn when the lure expires")
-    Check("swapBackCombat", "Swap weapons back in combat",
-        "When combat starts, re-equip the weapons the pole replaced.")
-    Check("swapBackOnEnd", "Swap weapons back when done",
-        "Re-equip your weapons once you stop fishing (idle timeout).")
+    Check("swapBackCombat", "Remind me to swap back in combat",
+        "When combat starts with the pole in hand, say which key puts your weapons back. (Addons can't swap gear on their own.)")
+    Check("swapBackOnEnd", "Remind me to swap back when done",
+        "Once you stop fishing (idle timeout), say which key puts your weapons back.")
     Slider("idleTimeout", "Session ends after", "Fishing session (sound preset, auto-loot) ends after this long without casting.",
         15, 300, 15, Whole)
 

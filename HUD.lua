@@ -63,9 +63,7 @@ castBtn.icon:SetTexture("Interface\\Icons\\Trade_Fishing")
 local lureBtn = ns.Gear.lureButton
 StyleIcon(lureBtn, 2)
 
-local poleBtn = CreateFrame("Button", nil, hud)
-poleBtn:RegisterForClicks("AnyUp")
-poleBtn:SetScript("OnClick", ns.Gear.TogglePole)
+local poleBtn = ns.Gear.poleButton
 StyleIcon(poleBtn, 3)
 
 ---------------------------------------------------------------------------

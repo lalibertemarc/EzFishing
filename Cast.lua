@@ -38,8 +38,9 @@ btn:SetScript("PreClick", function(self)
 
     local db, Gear = ns.db, ns.Gear
     if db.smartPole and not ns.PoleEquipped() and Gear.BestPole() then
-        self:SetAttribute("type", nil)
-        Gear.EquipPole()
+        Gear.SaveWeapons()
+        self:SetAttribute("type", "macro")
+        self:SetAttribute("macrotext", Gear.PoleMacro())
     elseif db.smartLure and ns.PoleEquipped() and not ns.LureTimeLeft() and Gear.BestLure() then
         self:SetAttribute("type", "macro")
         self:SetAttribute("macrotext", Gear.LureMacro())

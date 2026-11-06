@@ -11,7 +11,7 @@ A fishing helper for **WoW Forever**. Bind one key: press it to cast, press it a
 - **Fishing sound preset.** While you're fishing, music and ambience are off and sound effects are at max. Your settings come back when you stop (after the idle timeout, in combat, or when the pole comes off).
 - **Auto-loot** while fishing and a **bobber icon** above the bobber.
 - **Lures.** A lure button applies the best lure in your bags. It shows the time left and warns you when it runs out. The Cast key can also apply a lure on its own.
-- **Pole swap.** Equip the best pole in your bags and swap back to your weapons with the button, a key, when combat starts, or when you're done. The Cast key equips the pole if you forgot.
+- **Pole swap.** Equip the best pole in your bags and swap back to your weapons with the button, a key or `/click EzFishingPoleButton` in a macro. The Cast key equips the pole if you forgot, and a reminder tells you which key swaps back when combat starts or you're done.
 - **Catch log.** Catches per session, per zone and all time, catches per hour, getaways, typical bite time, and fishing skill-ups.
 - **Zone hint.** Shows the skill you need for no getaways in this zone: green means you're fine, yellow is close, red means fish will get away.
 - **Compact HUD.** By default it only shows while fishing or holding a pole. Hover it for stats.
@@ -35,7 +35,7 @@ Then type `/ezf config` (or Esc > Options > AddOns > EzFishing) and bind **Cast 
 | `/ezf show` / `hide` / `auto` | HUD always shown, hidden, or only while fishing |
 | `/ezf lock` / `unlock` | Lock the HUD (shift-drag always moves it) |
 | `/ezf reset` | Reset the HUD position |
-| `/ezf pole` | Swap pole and weapons |
+| `/ezf pole` | How to swap pole and weapons |
 | `/ezf stats` | Print catch stats |
 | `/ezf clear` | Clear this character's catch stats |
 | `/ezf zone` | Show which zone name and skill requirement are used |

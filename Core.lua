@@ -67,11 +67,6 @@ function ns.ItemIcon(item)
     return GetItemIcon and GetItemIcon(item)
 end
 
-function ns.EquipItem(item, slot)
-    if C_Item and C_Item.EquipItemByName then return C_Item.EquipItemByName(item, slot) end
-    return EquipItemByName(item, slot)
-end
-
 local function ReadLure()
     if C_PaperDollInfo and C_PaperDollInfo.GetTemporaryEnchantmentInfo then
         local info = C_PaperDollInfo.GetTemporaryEnchantmentInfo(INVSLOT_MAINHAND)
@@ -303,7 +298,7 @@ local COMMANDS = {
         ns.HUD.ApplyPosition()
         ns.Print("Position reset.")
     end,
-    pole   = function() ns.Gear.TogglePole() end,
+    pole   = function() ns.Gear.SwapHint() end,
     stats  = function() ns.Stats.PrintSummary() end,
     clear  = function()
         ns.Stats.Clear()
