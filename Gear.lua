@@ -106,10 +106,15 @@ end
 ns.On("EZF_READY", OnGearChanged)
 ns.On("BAG_UPDATE_DELAYED", OnGearChanged)
 ns.On("EZF_SKILL_CHANGED", OnGearChanged)
+-- The weapons in hand are remembered on every change while no pole is equipped (and kept after
+-- swapping back), so the swap back also works when the pole was put on by hand from the bags.
+ns.On("PLAYER_LOGIN", function()
+    Gear.SaveWeapons()
+    OnGearChanged()
+end)
 ns.On("PLAYER_EQUIPMENT_CHANGED", function(slot)
     if slot ~= INVSLOT_MAINHAND and slot ~= INVSLOT_OFFHAND then return end
-    -- Forget the saved weapons once something other than the pole is back in the main hand.
-    if slot == INVSLOT_MAINHAND and not ns.PoleEquipped() then ns.char.weapons = nil end
+    Gear.SaveWeapons()
     OnGearChanged()
 end)
 
@@ -165,13 +170,14 @@ function Gear.WeaponsMacro()
     return lines[1] and table.concat(lines, "\n")
 end
 
--- Remembers the weapons a pole is about to replace.
+-- Remembers the weapons in hand (never the pole). Empty hands keep the last weapons saved, so
+-- taking a weapon off before putting the pole on still swaps back to it.
 function Gear.SaveWeapons()
     if ns.PoleEquipped() then return end
-    ns.char.weapons = {
-        main = GetInventoryItemLink("player", INVSLOT_MAINHAND),
-        off = GetInventoryItemLink("player", INVSLOT_OFFHAND),
-    }
+    local main = GetInventoryItemLink("player", INVSLOT_MAINHAND)
+    local off = GetInventoryItemLink("player", INVSLOT_OFFHAND)
+    if not main and not off then return end
+    ns.char.weapons = { main = main, off = off }
 end
 
 local function UpdatePoleButton()
