@@ -1,5 +1,9 @@
 # EzFishing
 
+## v1.0.1
+
+- The pole swap now always remembers your last weapons, so swapping back also works when you put the pole on by hand from your bags. Your weapons are no longer forgotten after swapping back.
+
 ## v1.0.0
 
 EzFishing 1.0: tested and working on WoW Forever.
