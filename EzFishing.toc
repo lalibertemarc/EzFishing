@@ -3,6 +3,7 @@
 ## Notes: One key to cast and hook, loud splashes, lures, pole swap and catch stats.
 ## Author: Marc
 ## Version: @project-version@
+## Category: Professions
 ## IconTexture: Interface\Icons\Trade_Fishing
 ## SavedVariables: EzFishingDB
 ## SavedVariablesPerCharacter: EzFishingCharDB
