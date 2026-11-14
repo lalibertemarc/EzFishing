@@ -1,5 +1,9 @@
 # EzFishing
 
+## v1.0.2
+
+- Listed under **Professions** in the game's AddOns list.
+
 ## v1.0.1
 
 - The pole swap now always remembers your last weapons, so swapping back also works when you put the pole on by hand from your bags. Your weapons are no longer forgotten after swapping back.
