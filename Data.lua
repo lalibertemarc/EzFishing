@@ -38,6 +38,7 @@ ns.ZONE_SKILL = {
     -- 25
     ["Dun Morogh"] = 25, ["Durotar"] = 25, ["Elwynn Forest"] = 25, ["Mulgore"] = 25,
     ["Teldrassil"] = 25, ["Tirisfal Glades"] = 25,
+    ["Zephras Isle"] = 25, -- Forever (Skyborne start)
     -- 75
     ["The Barrens"] = 75, ["Blackfathom Deeps"] = 75, ["Darkshore"] = 75, ["Darnassus"] = 75,
     ["The Deadmines"] = 75, ["Ironforge"] = 75, ["Loch Modan"] = 75, ["Orgrimmar"] = 75,
@@ -50,6 +51,9 @@ ns.ZONE_SKILL = {
     ["Alterac Mountains"] = 225, ["Arathi Highlands"] = 225, ["Desolace"] = 225, ["Dustwallow Marsh"] = 225,
     ["Scarlet Monastery"] = 225, ["Stranglethorn Vale"] = 225, ["Swamp of Sorrows"] = 225,
     ["Thousand Needles"] = 225,
+    -- Forever, level 35-45: no published value, estimated like Dustwallow/Stranglethorn.
+    -- Both spellings until the client's zone text is confirmed.
+    ["Riverglades"] = 225, ["The Riverglades"] = 225,
     -- 300
     ["Azshara"] = 300, ["Felwood"] = 300, ["Feralas"] = 300, ["The Hinterlands"] = 300, ["Maraudon"] = 300,
     ["Moonglade"] = 300, ["Jaguero Isle"] = 300, ["Tanaris"] = 300, ["The Temple of Atal'Hakkar"] = 300,
