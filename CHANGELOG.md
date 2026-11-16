@@ -1,5 +1,9 @@
 # EzFishing
 
+## v1.0.3
+
+- Knows the fishing skill for two Forever zones: Zephras Isle (25) and Riverglades (225). Riverglades' number is an estimate until it's confirmed in game; tell us on Discord if fish keep getting away there.
+
 ## v1.0.2
 
 - Listed under **Professions** in the game's AddOns list.
