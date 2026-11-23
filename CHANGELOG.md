@@ -1,5 +1,9 @@
 # EzFishing
 
+## v1.0.5
+
+- The pole button's tooltip names your weapons again instead of showing "[] + []".
+
 ## v1.0.4
 
 - Fixed swapping back from the pole when you dual wield two copies of the same weapon: only one of them went back on. Both hands are filled again.
