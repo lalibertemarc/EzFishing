@@ -1,5 +1,10 @@
 # EzFishing
 
+## v1.0.4
+
+- Fixed swapping back from the pole when you dual wield two copies of the same weapon: only one of them went back on. Both hands are filled again.
+- Fixed swapping back after logging in or leveling up with the pole in your hands: your saved weapons weren't found in your bags anymore.
+
 ## v1.0.3
 
 - Knows the fishing skill for two Forever zones: Zephras Isle (25) and Riverglades (225). Riverglades' number is an estimate until it's confirmed in game; tell us on Discord if fish keep getting away there.
