@@ -260,14 +260,28 @@ TOOLTIPS[lureBtn] = function(tt)
     if left then tt:AddLine("Current lure: " .. ns.FormatTime(left) .. " left", 1, 1, 1) end
 end
 
+-- A saved weapon link as shown text. Links saved before the item had loaded have an empty name
+-- ("[]"), so the name is filled in from the item ID (asked for when not loaded yet: next hover).
+local function WeaponText(link)
+    if not link:find("|h%[%]|h") then return link end
+    local id = tonumber(link:match("item:(%d+)"))
+    local name = id and C_Item.GetItemNameByID(id)
+    if not name then
+        if id and C_Item.RequestLoadItemDataByID then C_Item.RequestLoadItemDataByID(id) end
+        name = id and ("item " .. id) or "weapon"
+    end
+    return (link:gsub("|h%[%]|h", function() return "|h[" .. name .. "]|h" end, 1))
+end
+
 TOOLTIPS[poleBtn] = function(tt)
     if ns.PoleEquipped() then
         local w = ns.char.weapons
         tt:AddLine("Swap back to weapons")
         if not w then
             Note(tt, "No saved weapons.")
-        elseif w.main then
-            tt:AddLine(w.main .. (w.off and (" + " .. w.off) or ""))
+        else
+            local main, off = w.main and WeaponText(w.main), w.off and WeaponText(w.off)
+            tt:AddLine(main and off and (main .. " + " .. off) or main or off)
         end
     else
         local pole = ns.Gear.BestPole()
