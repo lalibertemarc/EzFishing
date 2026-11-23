@@ -140,22 +140,51 @@ local poleBtn = CreateFrame("Button", "EzFishingPoleButton", UIParent, "SecureAc
 poleBtn:RegisterForClicks("AnyUp", "AnyDown")
 Gear.poleButton = poleBtn
 
--- "/equipslot" argument for a saved weapon: its bag and slot (exact, even with two copies of one
--- weapon; skip = a spot already taken), else its item ID.
+-- Item ID, enchant, gems and suffix from a link: what stays the same for one weapon. The rest
+-- changes on its own (the 9th field is your level, the 10th your spec; the name is empty when the
+-- item wasn't cached yet), so a link saved before a level-up or relog never equals the bag's.
+local function ItemKey(link)
+    local s = link and link:match("item:([%-%d:]+)")
+    if not s then return nil end
+    local fields, n = {}, 0
+    for f in (s .. ":"):gmatch("([^:]*):") do
+        if n == 7 then break end
+        n = n + 1
+        fields[n] = f
+    end
+    return table.concat(fields, ":", 1, n)
+end
+
+-- Where a saved weapon is: "bag slot" of the same weapon (ItemKey), else of any copy of its item ID
+-- (skip = a spot already taken by the main hand), else its item ID.
+-- /equipslot turns "bag slot" back into the item's link and equips by link (SecureCmdItemParse +
+-- C_Item.EquipItemByName), so with two copies of one weapon it grabs the copy just put in the
+-- main hand and moves it; the identical off hand goes on with /use on its exact bag slot instead.
 local function ItemArg(link, skip)
+    local key, id = ItemKey(link), link:match("item:(%d+)")
+    local anyCopy
     for bag = 0, NUM_BAG_SLOTS do
         for slot = 1, C_Container.GetContainerNumSlots(bag) do
             local where = bag .. " " .. slot
-            if where ~= skip and C_Container.GetContainerItemLink(bag, slot) == link then return where end
+            local bagLink = where ~= skip and C_Container.GetContainerItemLink(bag, slot)
+            if bagLink then
+                if ItemKey(bagLink) == key then return where end
+                if not anyCopy and bagLink:match("item:(%d+)") == id then anyCopy = where end
+            end
         end
     end
-    local id = link:match("item:(%d+)")
-    return id and "item:" .. id
+    return anyCopy or (id and "item:" .. id)
 end
 
 function Gear.PoleMacro()
     local pole = Gear.BestPole()
     return pole and format("/equipslot %d item:%d", INVSLOT_MAINHAND, pole)
+end
+
+-- Two links of one item ID (enchants may differ: equipping by link could still pick the wrong one).
+function Gear.SameItem(a, b)
+    local idA, idB = a:match("item:(%d+)"), b:match("item:(%d+)")
+    return idA ~= nil and idA == idB
 end
 
 -- Both weapons in one press, main hand first, so the two-handed pole is off before the off hand goes on.
@@ -166,7 +195,16 @@ function Gear.WeaponsMacro()
     local main = w.main and ItemArg(w.main)
     if main then lines[#lines + 1] = format("/equipslot %d %s", INVSLOT_MAINHAND, main) end
     local off = w.off and ItemArg(w.off, main)
-    if off then lines[#lines + 1] = format("/equipslot %d %s", INVSLOT_OFFHAND, off) end
+    if off then
+        -- Same weapon in both hands: /use equips that exact copy, and a one-hander goes to the
+        -- off hand, which is empty once the main hand is on (the pole is two-handed).
+        local inBags = main and main:find(" ", 1, true) and off:find(" ", 1, true)
+        if inBags and Gear.SameItem(w.main, w.off) then
+            lines[#lines + 1] = "/use " .. off
+        else
+            lines[#lines + 1] = format("/equipslot %d %s", INVSLOT_OFFHAND, off)
+        end
+    end
     return lines[1] and table.concat(lines, "\n")
 end
 
