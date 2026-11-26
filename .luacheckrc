@@ -23,14 +23,14 @@ read_globals = {
     "MinimalSliderWithSteppersMixin",
     -- Namespaced APIs
     "C_Spell", "C_Item", "C_Container", "C_CVar", "C_SkillInfo", "C_PaperDollInfo",
-    "C_Timer", "issecretvalue", "Enum",
+    "C_Timer", "C_Map", "issecretvalue", "Enum",
     -- Constants
     "INVSLOT_MAINHAND", "INVSLOT_OFFHAND", "NUM_BAG_SLOTS", "ERR_FISH_ESCAPED",
     -- Global APIs
     "GetSpellInfo", "GetItemCount", "GetItemIcon",
     "GetWeaponEnchantInfo", "GetProfessions", "GetProfessionInfo",
     "GetInventoryItemID", "GetInventoryItemLink", "UnitChannelInfo", "UnitExists", "UnitIsDeadOrGhost",
-    "UnitHasVehicleUI", "GetRealZoneText", "GetSubZoneText", "GetTime", "InCombatLockdown",
+    "UnitHasVehicleUI", "GetRealZoneText", "GetSubZoneText", "IsInInstance", "GetInstanceInfo", "GetTime", "InCombatLockdown",
     "IsShiftKeyDown", "IsMouseButtonDown", "IsMounted", "IsFlying", "IsFalling", "IsSwimming", "IsSubmerged",
     "IsPlayerMoving", "IsStealthed", "HasFullControl",
     "GetBindingKey", "GetBindingText", "SetOverrideBinding", "SetOverrideBindingClick", "ClearOverrideBindings",

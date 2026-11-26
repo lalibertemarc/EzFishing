@@ -32,35 +32,49 @@ ns.POLE_BONUS = {
     [19970] = 35, -- Arcanite Fishing Pole
 }
 
--- Effective fishing skill (skill + pole + lure) needed so fish never get away (enUS zone names).
--- Classic values; subzones (e.g. Jaguero Isle) are checked before the zone.
+-- Effective fishing skill (skill + pole + lure) needed so fish never get away. Classic values.
+-- Keyed by IDs, not names, so every client language works (zone names come back translated).
+-- IDs from Forever 1.60.1.70707's UiMap, Map and AreaTable tables on wago.tools.
+
+-- Zones by uiMapID (C_Map.GetBestMapForUnit, walked up its parents: towns and caves sit on their zone).
 ns.ZONE_SKILL = {
-    -- 25
-    ["Dun Morogh"] = 25, ["Durotar"] = 25, ["Elwynn Forest"] = 25, ["Mulgore"] = 25,
-    ["Teldrassil"] = 25, ["Tirisfal Glades"] = 25,
-    ["Zephras Isle"] = 25, -- Forever (Skyborne start)
-    -- 75
-    ["The Barrens"] = 75, ["Blackfathom Deeps"] = 75, ["Darkshore"] = 75, ["Darnassus"] = 75,
-    ["The Deadmines"] = 75, ["Ironforge"] = 75, ["Loch Modan"] = 75, ["Orgrimmar"] = 75,
-    ["Silverpine Forest"] = 75, ["Stormwind City"] = 75, ["Thunder Bluff"] = 75, ["Undercity"] = 75,
-    ["Wailing Caverns"] = 75, ["Westfall"] = 75,
-    -- 150
-    ["Ashenvale"] = 150, ["Duskwood"] = 150, ["Hillsbrad Foothills"] = 150, ["Redridge Mountains"] = 150,
-    ["Stonetalon Mountains"] = 150, ["Wetlands"] = 150,
-    -- 225
-    ["Alterac Mountains"] = 225, ["Arathi Highlands"] = 225, ["Desolace"] = 225, ["Dustwallow Marsh"] = 225,
-    ["Scarlet Monastery"] = 225, ["Stranglethorn Vale"] = 225, ["Swamp of Sorrows"] = 225,
-    ["Thousand Needles"] = 225,
-    -- Forever, level 35-45: no published value, estimated like Dustwallow/Stranglethorn.
-    -- Both spellings until the client's zone text is confirmed.
-    ["Riverglades"] = 225, ["The Riverglades"] = 225,
-    -- 300
-    ["Azshara"] = 300, ["Felwood"] = 300, ["Feralas"] = 300, ["The Hinterlands"] = 300, ["Maraudon"] = 300,
-    ["Moonglade"] = 300, ["Jaguero Isle"] = 300, ["Tanaris"] = 300, ["The Temple of Atal'Hakkar"] = 300,
-    ["Un'Goro Crater"] = 300, ["Western Plaguelands"] = 300,
-    -- 425
-    ["Deadwind Pass"] = 425, ["Eastern Plaguelands"] = 425, ["Scholomance"] = 425, ["Silithus"] = 425,
-    ["Stratholme"] = 425, ["Winterspring"] = 425,
+    -- 25: Durotar, Mulgore, Tirisfal Glades, Dun Morogh, Elwynn Forest, Teldrassil, Zephras Isle (Forever's
+    -- Skyborne start, two maps)
+    [1411] = 25, [1412] = 25, [1420] = 25, [1426] = 25, [1429] = 25, [1438] = 25, [2521] = 25, [2665] = 25,
+    -- 75: The Barrens, Silverpine Forest, Loch Modan, Westfall, Darkshore, Stormwind City, Orgrimmar,
+    -- Ironforge, Thunder Bluff, Darnassus, Undercity
+    [1413] = 75, [1421] = 75, [1432] = 75, [1436] = 75, [1439] = 75, [1453] = 75, [1454] = 75,
+    [1455] = 75, [1456] = 75, [1457] = 75, [1458] = 75,
+    -- 150: Hillsbrad Foothills, Duskwood, Redridge Mountains, Wetlands, Ashenvale, Stonetalon Mountains
+    [1424] = 150, [1431] = 150, [1433] = 150, [1437] = 150, [1440] = 150, [1442] = 150,
+    -- 225: Alterac Mountains, Arathi Highlands, Stranglethorn Vale, Swamp of Sorrows, Thousand Needles,
+    -- Desolace, Dustwallow Marsh
+    [1416] = 225, [1417] = 225, [1434] = 225, [1435] = 225, [1441] = 225, [1443] = 225, [1445] = 225,
+    -- Riverglades (Forever, level 35-45): no published value, estimated like Dustwallow/Stranglethorn.
+    [2548] = 225,
+    -- 300: Western Plaguelands, The Hinterlands, Feralas, Tanaris, Azshara, Felwood, Un'Goro Crater, Moonglade
+    [1422] = 300, [1425] = 300, [1444] = 300, [1446] = 300, [1447] = 300, [1448] = 300, [1449] = 300,
+    [1450] = 300,
+    -- 425: Eastern Plaguelands, Deadwind Pass, Silithus, Winterspring
+    [1423] = 425, [1430] = 425, [1451] = 425, [1452] = 425,
+}
+
+-- Dungeons (no world map inside) by instance ID (GetInstanceInfo's 8th return).
+ns.INSTANCE_SKILL = {
+    [36] = 75,   -- The Deadmines
+    [43] = 75,   -- Wailing Caverns
+    [48] = 75,   -- Blackfathom Deeps
+    [189] = 225, -- Scarlet Monastery
+    [109] = 300, -- The Temple of Atal'Hakkar
+    [349] = 300, -- Maraudon
+    [289] = 425, -- Scholomance
+    [329] = 425, -- Stratholme
+}
+
+-- Subzones, checked before their zone, by AreaTable ID: C_Map.GetAreaInfo gives the name in the client's
+-- language, compared with GetSubZoneText.
+ns.SUBZONE_SKILL = {
+    [297] = 300, -- Jaguero Isle (Stranglethorn Vale)
 }
 
 -- Key bindings from Bindings.xml with their labels (shown on the Key Bindings page).

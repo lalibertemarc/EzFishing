@@ -38,13 +38,13 @@ Then type `/ezf config` (or Esc > Options > AddOns > EzFishing) and bind **Cast 
 | `/ezf pole` | How to swap pole and weapons |
 | `/ezf stats` | Print catch stats |
 | `/ezf clear` | Clear this character's catch stats |
-| `/ezf zone` | Show which zone name and skill requirement are used |
+| `/ezf zone` | Show the zone, its map ID and the skill requirement used |
 | `/ezf debug` | Show interact settings and what the interact key would hit |
 
 ## Notes
 
 - The Cast key hooks the bobber through the game's soft-target interact. When the bobber isn't soft-targeted, the game interacts with your current target instead ("too far to interact"). The Cast button border turns green once the bobber is picked up. If it never does, clear your target and turn on **Options > Controls > Enable Interact Key**.
-- The zone table uses classic skill values and English zone names, so zone hints only work on the enUS client.
+- The zone table uses classic skill values (Riverglades is an estimate). Zones are found by map ID, so zone hints work in every client language.
 - Bindings can't change in combat. If combat starts mid-cast, EzFishing clears them on the way in and puts everything back afterwards.
 
 ## Releasing (maintainer notes)

@@ -172,11 +172,34 @@ function ns.ZoneName()
     return GetRealZoneText() or ""
 end
 
--- Skill needed in the current (sub)zone, plus the name it was found under.
+local function Readable(v)
+    if v == nil or (issecretvalue and issecretvalue(v)) then return nil end
+    return v
+end
+
+-- Skill needed where you are (subzone, dungeon, then zone), plus the place's name (in the client's
+-- language). Data.lua keys everything by ID, so any language works.
 function ns.ZoneRequirement()
-    local sub, zone = GetSubZoneText(), ns.ZoneName()
-    if sub and ns.ZONE_SKILL[sub] then return ns.ZONE_SKILL[sub], sub end
-    return ns.ZONE_SKILL[zone], zone
+    local sub = Readable(GetSubZoneText())
+    if sub and sub ~= "" and C_Map and C_Map.GetAreaInfo then
+        for areaID, req in pairs(ns.SUBZONE_SKILL) do
+            if C_Map.GetAreaInfo(areaID) == sub then return req, sub end
+        end
+    end
+    local inInstance = IsInInstance()
+    if inInstance then
+        local name, _, _, _, _, _, _, instanceID = GetInstanceInfo()
+        local req = ns.INSTANCE_SKILL[Readable(instanceID) or -1]
+        if req then return req, Readable(name) or ns.ZoneName() end
+    end
+    local mapID = C_Map and C_Map.GetBestMapForUnit and Readable(C_Map.GetBestMapForUnit("player"))
+    local hops = 0
+    while mapID and hops < 10 do
+        local info = C_Map.GetMapInfo(mapID)
+        local req = ns.ZONE_SKILL[mapID]
+        if req then return req, info and Readable(info.name) or ns.ZoneName() end
+        mapID, hops = info and Readable(info.parentMapID), hops + 1
+    end
 end
 
 function ns.Print(msg)
@@ -306,7 +329,8 @@ local COMMANDS = {
     end,
     zone   = function()
         local req, where = ns.ZoneRequirement()
-        ns.Print(format("Zone: %s, subzone: %s -> %s", ns.ZoneName(), GetSubZoneText() or "",
+        local mapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
+        ns.Print(format("Zone: %s (map %s), subzone: %s -> %s", ns.ZoneName(), tostring(mapID), GetSubZoneText() or "",
             req and format("needs %d (%s)", req, where) or "no data"))
     end,
     debug  = function()

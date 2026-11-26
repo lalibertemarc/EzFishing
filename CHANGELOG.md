@@ -1,5 +1,10 @@
 # EzFishing
 
+## v1.0.6
+
+- **Zone hints in every language.** The skill you need for no getaways now shows on French, German, Spanish and every other client, not just English.
+- `/ezf zone` also shows the zone's map ID.
+
 ## v1.0.5
 
 - The pole button's tooltip names your weapons again instead of showing "[] + []".
